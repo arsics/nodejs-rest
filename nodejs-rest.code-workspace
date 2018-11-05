@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "njsrest01-modules"
+		},
+		{
+			"path": "njsrest04_1-rest"
 		}
 	]
 }
