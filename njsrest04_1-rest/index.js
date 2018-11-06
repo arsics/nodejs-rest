@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json()); // enable json body processing
+
 const courses = [
     { id: 1, name: 'course1' },
     { id: 2, name: 'course2' },
@@ -30,6 +32,18 @@ app.get('/api/courses/:id', (req, res) => {
     res.send(course);
 });
 
+app.post('/api/courses', (req, res) => {
+    // see 'app.use' call above about parsing the 'req.body.xyz'
+    if (!req.body.name || req.body.name.length < 3) { // bad
+        res.status(400).send('Name is required and must have min 3 chars');
+    }
+    const course = {
+        id: courses.length + 1,
+        name: req.body.name
+    };
+    courses.push(course);
+    res.send(course); // return created object to the client
+});
 
 // PORT environment variable (execute 'set PORT=5000' in terminal)
 const port = process.env.PORT || 3000;

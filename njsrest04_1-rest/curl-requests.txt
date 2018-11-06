@@ -1,0 +1,10 @@
+--- post new course:
+curl -i -X POST \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+	"name": "new course"
+}' \
+ 'http://localhost:3000/api/courses'
+
+ ---
