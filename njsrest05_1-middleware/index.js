@@ -1,16 +1,12 @@
 const express = require('express');
 const app = express();
+const logger = require('./logger');
+const authenticator = require('./authenticator');
 
 app.use(express.json());
 
-/**
- * A middleware function for logging
-*/
-app.use((req, res, next) => {
-    console.log('Logging');
-    next(); // if commented out the request will hang
-});
-
+app.use(logger);
+app.use(authenticator);
 
 app.get('/', (req, res) => {
     res.send('Hello world!');
