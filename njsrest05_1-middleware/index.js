@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const app = express();
 const logger = require('./logger');
 const authenticator = require('./authenticator');
+const config = require('config');
 
 // set this environemt variable on Win with: 'set NODE_ENV=production'
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`); // default value is 'undefined'
@@ -17,6 +18,10 @@ app.use(express.static('public'));
 
 app.use(logger);
 app.use(authenticator);
+
+// Configuration
+console.log('Application name: ' + config.get('name'));
+console.log('Mail server: ' + config.get('mail.host'));
 
 if (app.get('env') === 'development') { // only log http requests on development environment
     console.log('Morgan enabled');
