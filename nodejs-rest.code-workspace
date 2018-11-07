@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "vidly"
+		},
+		{
+			"path": "njsrest05_1-middleware"
 		}
 	]
 }
