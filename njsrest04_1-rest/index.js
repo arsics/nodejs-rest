@@ -29,17 +29,15 @@ app.get('/api/courses/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) {  // if we don't find the couse return 404
         res.status('404').send('Course with that ID was not found');
+        return;
     }
     res.send(course);
 });
 
 app.post('/api/courses', (req, res) => {
-    const schema = {
-        name: Joi.string().min(3).required()
-    };
-    const result = Joi.validate(req.body, schema);
-    if (result.error) { // bad
-        res.status(400).send(result.error.details[0].message);
+    const { error } = validateCourse(req.body);
+    if (error) {
+        res.status(400).send(error.details[0].message);
         return;
     }
 
@@ -51,6 +49,31 @@ app.post('/api/courses', (req, res) => {
     res.send(course); // return created object to the client
 });
 
+app.put('/api/courses/:id', (req, res) => {
+    // look up the course and validate, return 404 if not existing or 400 if invalid
+    const course = courses.find(c => c.id === parseInt(req.params.id));
+    if (!course) {
+        res.status('404').send('Course with that ID was not found');
+        return;
+    }
+    const { error } = validateCourse(req.body); // destructured body object
+    if (error) { // bad
+        res.status(400).send(error.details[0].message);
+        return;
+    }
+    
+    // update the course and return it
+    course.name = req.body.name;
+    res.send(course);
+});
+
 // PORT environment variable (execute 'set PORT=5000' in terminal)
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+function validateCourse(course) {
+    const schema = {
+        name: Joi.string().min(3).required()
+    };
+    return Joi.validate(course, schema);
+}
