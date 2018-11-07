@@ -1,0 +1,210 @@
+{
+  "front-version": "2.19.1",
+  "version": 3,
+  "nodes": [
+    {
+      "type": "Project",
+      "id": "5208563b-da15-4239-a06f-7dae17868098",
+      "lastModified": "2018-11-07T12:39:25.642+01:00",
+      "name": "nodejs-rest"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\t\"name\": \"new course\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:3000",
+        "path": "/api/courses/2"
+      },
+      "id": "8909830b-b26b-4b0d-8a42-93b1037821f8",
+      "lastModified": "2018-11-07T12:39:25.643+01:00",
+      "name": "01-delete_course",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Exists",
+          "subject": "ResponseBody",
+          "path": "content",
+          "value": ""
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "github|506506"
+      },
+      "parentId": "5208563b-da15-4239-a06f-7dae17868098"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\t\"name\": \"n\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:3000",
+        "path": "/api/courses"
+      },
+      "id": "9b86a5c5-e57d-48e4-9055-5e3a8a4184df",
+      "lastModified": "2018-11-07T12:21:22.515+01:00",
+      "name": "01-get_courses",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Exists",
+          "subject": "ResponseBody",
+          "path": "content",
+          "value": ""
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "github|506506"
+      },
+      "parentId": "5208563b-da15-4239-a06f-7dae17868098"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\t\"name\": \"n\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:3000",
+        "path": "/api/courses"
+      },
+      "id": "fd58d8fa-4bee-498d-893f-1ff0721a8509",
+      "lastModified": "2018-11-07T12:21:29.454+01:00",
+      "name": "01-post_course",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "assertions": [
+        {
+          "comparison": "Exists",
+          "subject": "ResponseBody",
+          "path": "content",
+          "value": ""
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "github|506506"
+      },
+      "parentId": "5208563b-da15-4239-a06f-7dae17868098"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.4",
+        "name": "PUT"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\t\"name\": \"new course\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:3000",
+        "path": "/api/courses/12"
+      },
+      "id": "a732795a-9805-403e-bb68-87ec3aaffe2a",
+      "lastModified": "2018-11-07T12:27:29.324+01:00",
+      "name": "01-put_course",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "assertions": [
+        {
+          "comparison": "Exists",
+          "subject": "ResponseBody",
+          "path": "content",
+          "value": ""
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "github|506506"
+      },
+      "parentId": "5208563b-da15-4239-a06f-7dae17868098"
+    }
+  ]
+}
