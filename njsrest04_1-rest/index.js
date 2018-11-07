@@ -1,3 +1,4 @@
+const Joi = require('Joi'); // class
 const express = require('express');
 const app = express();
 
@@ -33,10 +34,15 @@ app.get('/api/courses/:id', (req, res) => {
 });
 
 app.post('/api/courses', (req, res) => {
-    // see 'app.use' call above about parsing the 'req.body.xyz'
-    if (!req.body.name || req.body.name.length < 3) { // bad
-        res.status(400).send('Name is required and must have min 3 chars');
+    const schema = {
+        name: Joi.string().min(3).required()
+    };
+    const result = Joi.validate(req.body, schema);
+    if (result.error) { // bad
+        res.status(400).send(result.error.details[0].message);
+        return;
     }
+
     const course = {
         id: courses.length + 1,
         name: req.body.name
